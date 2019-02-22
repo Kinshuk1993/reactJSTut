@@ -12,7 +12,10 @@ import './App.css';
 class App extends Component {
   constructor() {
     super();
+    //Using state for global data container - ALWAYS PREFERRED
     this.state = {
+      header: 'State header',
+      content: 'Content header',
       data: [
         {
           id: 1,
@@ -61,6 +64,8 @@ class App extends Component {
   <p>This is the content!</p>
   <Header/>
   <Content/>
+
+  {/* Stateful example */}
   <table>
     <tbody>
       {
@@ -70,6 +75,13 @@ class App extends Component {
       }
     </tbody>
   </table>
+
+  {/* Using global state example */}
+  <h4>
+    {this.state.header}
+    <br/>
+    {this.state.content}
+  </h4>
 </div>
     );
   }
@@ -80,7 +92,7 @@ class Header extends Component {
     return (
       <div>
         <h1>
-          Kinshuk Header Class Displaying
+          Header Class Displaying
         </h1>
       </div>
     );
@@ -116,7 +128,7 @@ class Content extends Component {
     return (
       <div>
         <h3>
-          Kinshuk Content Class Displaying
+          Content Class Displaying
         </h3>
       </div>
     );
