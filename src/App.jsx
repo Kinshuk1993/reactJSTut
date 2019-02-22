@@ -36,11 +36,13 @@ class App extends Component {
     };
   }
   render() {
-    // {/*Variable to display ternary operation handling in JSX*/}
+    // Variable to display ternary operation handling in JSX
     var i = 1;
     /* The no lone block is depricated now and will give a warning
     Lone blocks won't accept comments, only const, let,
     and class declarations
+    The use of multiline comment using {} can be done inside the HTML part  without
+    getting any warnings
     */
     // {
     //   //Custom Styling...
@@ -49,6 +51,7 @@ class App extends Component {
       fontSize: 20,
       color: 'rgb'
    }
+  //  Class is replaced by className for applying the CSS propeerties
     return (
 <div className="App App-header">
   <img src={logo} className="App-logo" alt="logo" />
@@ -59,11 +62,14 @@ class App extends Component {
   <h1>Header</h1>
   <h2 style={customStyle}>Sum is: {1+1.5}</h2>
   <h3>
+    {/* Using ternary operator or any value related operations, do it inside curly brases '{}' */}
   {i === 1 ? 'True!' : 'False'}
   </h3>
   <p>This is the content!</p>
-  <Header/>
-  <Content/>
+  
+  {/* State and props example where updating value in parent state and passing it in child */}
+  <Header headerPropFromState={this.state.header} />
+  <Content contentPropFromState={this.state.content} />
 
   {/* Stateful example */}
   <table>
@@ -82,6 +88,20 @@ class App extends Component {
     <br/>
     {this.state.content}
   </h4>
+
+  {/* Using custom props */}
+  <p>
+    {this.props.propsOne}
+    <br/>
+    {this.props.propsTwo}
+  </p>
+
+  {/* Using default props */}
+  <p>
+    {this.props.defaultPropsOne}
+    <br/>
+    {this.props.defaultPropsTwo}
+  </p>
 </div>
     );
   }
@@ -91,9 +111,12 @@ class Header extends Component {
   render() {
     return (
       <div>
-        <h1>
+        <h4>
           Header Class Displaying
-        </h1>
+          <br/>
+          {/* State and props example where updating value in parent state and passing it in child */}
+          {this.props.headerPropFromState}
+        </h4>
       </div>
     );
   }
@@ -127,12 +150,21 @@ class Content extends Component {
   render() {
     return (
       <div>
-        <h3>
+        <h4>
           Content Class Displaying
-        </h3>
+          <br/>
+          {/* State and props example where updating value in parent state and passing it in child */}
+          {this.props.contentPropFromState}
+        </h4>
       </div>
     );
   }
+}
+
+// Using default property values
+App.defaultProps = {
+  defaultPropsOne: 'Default props one',
+  defaultPropsTwo: 'Default props two'
 }
 
 export default App;
