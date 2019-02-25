@@ -8,6 +8,7 @@ IN ES6
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ValidatingProps from './ValidatingProps.jsx';
 
 class App extends Component {
   constructor() {
@@ -53,56 +54,61 @@ class App extends Component {
    }
   //  Class is replaced by className for applying the CSS propeerties
     return (
-<div className="App App-header">
-  <img src={logo} className="App-logo" alt="logo" />
-  Edit <code>src/App.js</code> and save to reload.
-  <a className="App-link" href="https://reactjs.org/tutorial/tutorial.html" target="_blank" rel="noopener noreferrer">
-    Learn React
-  </a>
-  <h1>Header</h1>
-  <h2 style={customStyle}>Sum is: {1+1.5}</h2>
-  <h3>
-    {/* Using ternary operator or any value related operations, do it inside curly brases '{}' */}
-  {i === 1 ? 'True!' : 'False'}
-  </h3>
-  <p>This is the content!</p>
-  
-  {/* State and props example where updating value in parent state and passing it in child */}
-  <Header headerPropFromState={this.state.header} />
-  <Content contentPropFromState={this.state.content} />
+      <>
+        <div className="App App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          Edit <code>src/App.js</code> and save to reload.
+          <a className="App-link" href="https://reactjs.org/tutorial/tutorial.html" target="_blank" rel="noopener noreferrer">
+            Learn React
+          </a>
+          <h1>Header</h1>
+          <h2 style={customStyle}>Sum is: {1+1.5}</h2>
+          <h3>
+            {/* Using ternary operator or any value related operations, do it inside curly brases '{}' */}
+            {i === 1 ? 'True!' : 'False'}
+          </h3>
+          <p>This is the content!</p>
 
-  {/* Stateful example */}
-  <table>
-    <tbody>
-      {
-        this.state.data.map(
-          (person, i) => <TableRow key={i} data={person}/>
-        )
-      }
-    </tbody>
-  </table>
+          {/* State and props example where updating value in parent state and passing it in child */}
+          <Header headerPropFromState={this.state.header} />
+          <Content contentPropFromState={this.state.content} />
 
-  {/* Using global state example */}
-  <h4>
-    {this.state.header}
-    <br/>
-    {this.state.content}
-  </h4>
+          {/* Stateful example */}
+          <table>
+            <tbody>
+              {
+              this.state.data.map(
+              (person, i) =>
+              <TableRow key={i} data={person} />
+              )
+              }
+            </tbody>
+          </table>
 
-  {/* Using custom props */}
-  <p>
-    {this.props.propsOne}
-    <br/>
-    {this.props.propsTwo}
-  </p>
+          {/* Using global state example */}
+          <h4>
+            {this.state.header}
+            <br />
+            {this.state.content}
+          </h4>
 
-  {/* Using default props */}
-  <p>
-    {this.props.defaultPropsOne}
-    <br/>
-    {this.props.defaultPropsTwo}
-  </p>
-</div>
+          {/* Using custom props */}
+          <p>
+            {this.props.propsOne}
+            <br />
+            {this.props.propsTwo}
+          </p>
+
+          {/* Using default props */}
+          <p>
+            {this.props.defaultPropsOne}
+            <br />
+            {this.props.defaultPropsTwo}
+          </p>
+        </div>
+        
+        <ValidatingProps/>
+      </>
     );
   }
 }
